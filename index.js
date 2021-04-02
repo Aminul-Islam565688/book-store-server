@@ -37,7 +37,6 @@ client.connect((err) => {
   //adding Book To The Database
   app.post("/addBooksData", (req, res) => {
     const booksData = req.body;
-    console.log(booksData);
     booksCollection.insertOne(booksData).then((result) => {
       res.send(result.insertedCount > 0);
     });
@@ -71,7 +70,6 @@ client.connect((err) => {
     const bearer = req.headers.authorization;
     if (bearer && bearer.startsWith("Bearer ")) {
       const idToken = bearer.split(" ")[1];
-      console.log({ idToken });
       // idToken comes from the client app
       admin
         .auth()
@@ -85,7 +83,6 @@ client.connect((err) => {
                 res.send(document);
               });
           }
-          console.log(uid);
         })
         .catch((error) => {
           // Handle error
