@@ -16,7 +16,7 @@ const database = process.env.DB_DATABASE;
 
 //Firebase Authentication
 
-const serviceAccount = require("./PrivateKey/book-store-1856c-firebase-adminsdk-ccivo-8b8de2455b.json");
+const serviceAccount = require("../PrivateKey/book-store-1856c-firebase-adminsdk-ccivo-8b8de2455b.json");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
