@@ -25,18 +25,15 @@ admin.initializeApp({
 //MongoDB
 const MongoClient = require("mongodb").MongoClient;
 const { ObjectId } = require("bson");
-const uri = ` mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.aifw0.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
+const uri = ` mongodb+srv://Titu:youngman@cluster0.aifw0.mongodb.net/BookShop?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 client.connect((err) => {
-  const booksCollection = client
-    .db(process.env.DB_DATABASE)
-    .collection("BooksDataBase");
-  const orderCollection = client
-    .db(process.env.DB_DATABASE)
-    .collection("BookOrders");
+  console.log(err);
+  const booksCollection = client.db(BookShop).collection("BooksDataBase");
+  const orderCollection = client.db(BookShop).collection("BookOrders");
 
   //adding Book To The Database
   app.post("/addBooksData", (req, res) => {
