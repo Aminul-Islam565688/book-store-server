@@ -1,6 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-require("dotenv").config();
+// require("dotenv").config();
 const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 7897;
@@ -25,15 +25,16 @@ admin.initializeApp({
 //MongoDB
 const MongoClient = require("mongodb").MongoClient;
 const { ObjectId } = require("bson");
-const uri = ` mongodb+srv://Titu:youngman@cluster0.aifw0.mongodb.net/BookShop?retryWrites=true&w=majority`;
+const uri =
+  "mongodb+srv://Titu:test1234@cluster0.aifw0.mongodb.net/BookShop?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 client.connect((err) => {
   console.log(err);
-  const booksCollection = client.db(BookShop).collection("BooksDataBase");
-  const orderCollection = client.db(BookShop).collection("BookOrders");
+  const booksCollection = client.db("BookShop").collection("BooksDataBase");
+  const orderCollection = client.db("BookShop").collection("BookOrders");
 
   //adding Book To The Database
   app.post("/addBooksData", (req, res) => {
