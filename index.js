@@ -31,8 +31,12 @@ const client = new MongoClient(uri, {
   useUnifiedTopology: true,
 });
 client.connect((err) => {
-  const booksCollection = client.db(database).collection("BooksDataBase");
-  const orderCollection = client.db(database).collection("BookOrders");
+  const booksCollection = client
+    .db(process.env.DB_DATABASE)
+    .collection("BooksDataBase");
+  const orderCollection = client
+    .db(process.env.DB_DATABASE)
+    .collection("BookOrders");
 
   //adding Book To The Database
   app.post("/addBooksData", (req, res) => {
