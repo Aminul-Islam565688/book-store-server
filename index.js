@@ -10,9 +10,9 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // .env
-const user = process.env.DB_USER;
-const password = process.env.DB_PASS;
-const database = process.env.DB_DATABASE;
+// const user = process.env.DB_USER;
+// const password = process.env.DB_PASS;
+// const database = process.env.DB_DATABASE;
 
 //Firebase Authentication
 
@@ -25,7 +25,7 @@ admin.initializeApp({
 //MongoDB
 const MongoClient = require("mongodb").MongoClient;
 const { ObjectId } = require("bson");
-const uri = ` mongodb+srv://${user}:${password}@cluster0.aifw0.mongodb.net/${database}?retryWrites=true&w=majority`;
+const uri = ` mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.aifw0.mongodb.net/${process.env.DB_DATABASE}?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
